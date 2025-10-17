@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordo - Deadline Tracker</title>
+
+    <link rel="icon" type="image/svg" href="images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* мінімальні стилі */
+        body { font-family: Arial; margin: 0; padding: 20px; }
+        .nav { display: flex; justify-content: space-between; margin-bottom: 40px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-link.active { font-weight: bold; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; cursor: pointer; }
+        
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { margin-bottom: 10px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+        .stat-card { text-align: center; padding: 15px; background: #f5f5f5; border-radius: 8px; }
+        .stat-value { font-size: 24px; font-weight: bold; }
+        
+        .app-container { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .task-form, .calendar-section { padding: 20px; background: white; border-radius: 8px; }
+        
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        textarea { min-height: 80px; }
+        .btn { padding: 10px 20px; background: #4B7D65; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        
+        .task-list { margin-top: 20px; }
+        .task-card { padding: 15px; margin-bottom: 10px; background: #f9f9f9; border-radius: 6px; border-left: 4px solid #4B7D65; }
+        .task-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .task-actions { display: flex; gap: 10px; margin-top: 10px; }
+        
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+        .calendar-day-header { text-align: center; padding: 10px; font-weight: bold; background: #f0f0f0; }
+        .calendar-day { height: 80px; padding: 5px; border: 1px solid #ddd; border-radius: 4px; }
+        
+        footer { text-align: center; margin-top: 40px; color: #666; }
+    </style>
+</head>
+<body>
+    <!-- Навбар -->
+    <nav class="nav">
+        <div class="nav__logo">
+            <a href="index.html" class="logo__link">
+                <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image" style="height: 30px">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="deadline-tracker.html" class="nav-link active">Deadline Tracker</a>
+            <a href="timer.html" class="nav-link">Timer</a>
+        </div>
+        <div class="avatar" id="avatar-btn">JS</div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calendar-alt"></i> Deadline Tracker</h1>
+            <p class="subtitle">Manage your tasks and visualize deadlines with ease</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="total-tasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completed-tasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="pending-tasks">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="overdue-tasks">0</div>
+                <div class="stat-label">Overdue</div>
+            </div>
+        </div>
+
+        <div class="app-container">
+            <div class="task-form">
+                <h2>Add New Task</h2>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" placeholder="Enter task description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDueDate">Due Date</label>
+                        <input type="date" id="taskDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-block">Add Task</button>
+                </form>
+
+                <div class="task-list">
+                    <h3>Your Tasks</h3>
+                    <div id="tasksContainer">
+                        <div class="empty-state">
+                            <i class="fas fa-tasks"></i>
+                            <h3>No tasks yet</h3>
+                            <p>Add your first task using the form above</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="month-year" id="currentMonthYear">September 2025</div>
+                    <button class="btn" id="todayBtn">Today</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Календар буде тут -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="footer__content">
+        <p class="footer__text">
+            &copy; 2025 Ordo | Organize your work, boost your productivity
+        </p>
+    </div>
+</footer>
+</body>
+
+
+</html>

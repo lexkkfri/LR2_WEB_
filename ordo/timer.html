@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordo - Timer</title>
+
+    <link rel="icon" type="image/svg" href="images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+    
+    <style>
+        /* мінімальні стилі */
+        body { font-family: Arial; margin: 0; padding: 20px; }
+        .nav { display: flex; justify-content: space-between; margin-bottom: 40px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-link.active { font-weight: bold; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; cursor: pointer; }
+        .timer-display { font-size: 80px; text-align: center; margin: 40px 0; font-family: monospace; }
+        .timer-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
+        .timer-settings { display: flex; justify-content: center; gap: 40px; }
+        .setting { text-align: center; }
+        .number-input { width: 60px; text-align: center; padding: 5px; }
+        footer { text-align: center; margin-top: 40px; color: #666; }
+    </style>
+</head>
+<body>
+    <!-- Навбар -->
+    <nav class="nav">
+        <div class="nav__logo">
+                <a href="index.html" class="logo__link">
+                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image" style="height: 30px">
+                </a>
+            </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="deadline-tracker.html" class="nav-link">Deadline Tracker</a>
+            <a href="timer.html" class="nav-link active">Timer</a>
+        </div>
+        <div class="avatar" id="avatar-btn">JS</div>
+    </nav>
+
+    <!-- Секція таймера -->
+    <main>
+        <h1 class="timer_title">Timer</h1>
+        
+        <!-- Дисплей таймера -->
+        <div class="timer-display" id="timer-display">25:00</div>
+        
+        <!-- Управління -->
+        <div class="timer-controls">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn" disabled>Pause</button>
+            <button id="discard-btn">Discard</button>
+            <button id="skip-btn">Skip</button>
+        </div>
+        
+        <!-- Налаштування таймера -->
+        <div class="timer-settings">
+            <div class="setting">
+                <h3>Study Minutes</h3>
+                <input type="number" class="number-input" id="study-minutes" value="25" min="1" max="60">
+            </div>
+            
+            <div class="setting">
+                <h3>Rest Minutes</h3>
+                <input type="number" class="number-input" id="rest-minutes" value="5" min="1" max="30">
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+    <div class="footer__content">
+        <p class="footer__text">
+            &copy; 2025 Ordo | Organize your work, boost your productivity
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

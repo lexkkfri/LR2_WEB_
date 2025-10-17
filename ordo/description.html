@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordo - Organize Your Productivity</title>
+
+    <!-- Preload -->
+    <link rel="preload" href="images/logo.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="images/about.svg" as="image" type="image/svg+xml">
+
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+
+    <style>
+        /* Мінімальні стилі для читабельності сайту, будуть видалені пізніше */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .description_image {
+            width: 300px;
+
+        }
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навбар -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <a href="#" class="logo__link">
+                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image" style="height: 30px">
+                </a>
+            </div>
+            
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#about" class="nav__link">About</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#features" class="nav__link">Features</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#advantages" class="nav__link">Advantages</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#pricing" class="nav__link">Pricing</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#how-it-works" class="nav__link">How it works</a>
+                </li>
+            </ul>
+            
+            <div class="nav__actions">
+               <a href="register.html" class="btn btn--primary">Get started</a>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <span class="toggle__bar"></span>
+                <span class="toggle__bar"></span>
+                <span class="toggle__bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content container">
+            <h1 class="hero__title">Organize Your Work, Boost Your Productivity</h1>
+            <p class="hero__description">Ordo helps you track daily progress, manage deadlines, and maintain personal productivity with simple, effective tools.</p>
+            <a href="register.html" class="btn btn--primary">Get started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section__title">About Ordo</h2>
+            <div class="about__content">
+                <div class="about__text">
+                    <p>Ordo is an online service for tracking daily progress in work and study, helping you organize workflows, control deadlines, and maintain personal productivity.</p>
+                    <p>With Ordo, you can keep a daily journal, create and track to-do lists, use focus timers, and monitor your work regularity through daily check-ins.</p>
+                </div>
+                <div class="description_image">
+                    <!-- Оптимізоване зображення -->
+                    <img src="images/about.svg" alt="About Ordo" class="about__img lazy-image" id="about-image" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section__title">Features</h2>
+            <div class="features__grid">
+                <div class="feature__item">
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/todo.svg" alt="To-Do Lists" class="feature__img" id="feature-todo-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="feature__title">To-Do Lists & Deadlines</h3>
+                    <p class="feature__description">Create and track tasks with deadlines to stay organized and never miss important dates.</p>
+                </div>
+                
+                <div class="feature__item">
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/journal.svg" alt="Daily Journal" class="feature__img" id="feature-journal-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="feature__title">Daily Journal</h3>
+                    <p class="feature__description">Keep notes and track your daily progress to build productive habits.</p>
+                </div>
+                
+                <div class="feature__item">
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/timer.svg" alt="Focus Timer" class="feature__img" id="feature-timer-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="feature__title">Focus Timer</h3>
+                    <p class="feature__description">Use the Pomodoro timer to maintain concentration during work sessions.</p>
+                </div>
+                
+                <div class="feature__item">
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/progress.svg" alt="Progress Tracking" class="feature__img" id="feature-progress-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="feature__title">Progress Tracking</h3>
+                    <p class="feature__description">Monitor your work regularity with daily check-ins and streak counters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2 class="section__title">Advantages</h2>
+            <div class="advantages__content">
+                <div class="description_image">
+                    <!-- Оптимізоване зображення -->
+                    <img src="images/advantages.svg" alt="Ordo Advantages" class="advantages__img" id="advantages-image" loading="lazy" decoding="async">
+                </div>
+                <div class="advantages__list">
+                    <div class="advantage__item">
+                        <h3 class="advantage__title">All-in-One Solution</h3>
+                        <p class="advantage__description">Combine tasks, journaling, and focus timer in one product without needing separate apps.</p>
+                    </div>
+                    
+                    <div class="advantage__item">
+                        <h3 class="advantage__title">Simple & Intuitive</h3>
+                        <p class="advantage__description">Clean interface designed for daily use without unnecessary complexity.</p>
+                    </div>
+                    
+                    <div class="advantage__item">
+                        <h3 class="advantage__title">Focus on Productivity</h3>
+                        <p class="advantage__description">Tools specifically designed to help you build better work habits and stay focused.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section__title">Pricing</h2>
+            <div class="pricing__content">
+                <div class="pricing__card">
+                    <h3 class="pricing__title">Free</h3>
+                    <p class="pricing__price">$0</p>
+                    <p class="pricing__period">forever</p>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature">All core features</li>
+                        <li class="pricing__feature">Unlimited tasks & notes</li>
+                        <li class="pricing__feature">Basic progress tracking</li>
+                        <li class="pricing__feature">Focus timer</li>
+                    </ul>
+                    <button class="btn btn--primary pricing__btn">Get Started</button>
+                </div>
+            </div>
+            <p class="pricing__note">Ordo is completely free and open access. We believe productivity tools should be available to everyone.</p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section__title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__number">1</div>
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/signup.svg" alt="Sign Up" class="step__img" id="step1-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="step__title">Sign Up</h3>
+                    <p class="step__description">Create your free account in less than a minute.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step__number">2</div>
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/setup.svg" alt="Set Up" class="step__img" id="step2-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="step__title">Set Up Your Workspace</h3>
+                    <p class="step__description">Add your tasks, deadlines, and customize your preferences.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step__number">3</div>
+                    <div class="description_image">
+                        <!-- Оптимізоване зображення -->
+                        <img src="images/start_working.svg" alt="Start Working" class="step__img" id="step3-image" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="step__title">Start Working Productively</h3>
+                    <p class="step__description">Use the tools to organize your day and track your progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta__title">Ready to Boost Your Productivity?</h2>
+            <p class="cta__description">Join thousands of students and professionals who use Ordo to organize their work and achieve their goals.</p>
+            <button class="btn btn--large btn--primary" id="cta-btn">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <div class="footer__logo">
+                        <img src="#" alt="Ordo Logo" class="footer__logo-img" id="footer-logo-image">
+                        <span class="footer__logo-text">Ordo</span>
+                    </div>
+                    <p class="footer__description">Your daily companion for organized work and productive habits.</p>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Product</h3>
+                    <ul class="footer__links">
+                        <li><a href="#features" class="footer__link">Features</a></li>
+                        <li><a href="#advantages" class="footer__link">Advantages</a></li>
+                        <li><a href="#pricing" class="footer__link">Pricing</a></li>
+                        <li><a href="#how-it-works" class="footer__link">How it works</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Company</h3>
+                    <ul class="footer__links">
+                        <li><a href="#about" class="footer__link">About</a></li>
+                        <li><a href="#" class="footer__link">Blog</a></li>
+                        <li><a href="#" class="footer__link">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Support</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Help Center</a></li>
+                        <li><a href="#" class="footer__link">Contact Us</a></li>
+                        <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer__link">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <ul class="footer__links">
+                        <li>Email: support@ordo.com</li>
+                        <li>Follow us on social media</li>
+                    </ul>
+                    <div class="footer__social">
+                        <a href="#" class="social__link" aria-label="Twitter">
+                            <!-- Social icon placeholder -->
+                            <span class="social__icon">Tw</span>
+                        </a>
+                        <a href="#" class="social__link" aria-label="Facebook">
+                            <!-- Social icon placeholder -->
+                            <span class="social__icon">Fb</span>
+                        </a>
+                        <a href="#" class="social__link" aria-label="Instagram">
+                            <!-- Social icon placeholder -->
+                            <span class="social__icon">Ig</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Ordo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
