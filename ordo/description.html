@@ -12,86 +12,38 @@
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="images/favicon.png">
 
-
-    <style>
-        /* Мінімальні стилі для читабельності сайту, будуть видалені пізніше */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .description_image {
-            width: 300px;
-
-        }
-        section {
-            padding: 60px 0;
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 20px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="description-page">
     <!-- Навбар -->
     <header class="header">
-        <nav class="nav container">
+        <nav class="nav container" id="main-nav">
             <div class="nav__logo">
                 <a href="#" class="logo__link">
-                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image" style="height: 30px">
+                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image">
                 </a>
             </div>
             
-            <ul class="nav__menu" id="nav-menu">
+            <ul class="nav__menu nav-links" id="nav-menu">
                 <li class="nav__item">
-                    <a href="#about" class="nav__link">About</a>
+                    <a href="#about" class="nav-link">About</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#features" class="nav__link">Features</a>
+                    <a href="#features" class="nav-link">Features</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#advantages" class="nav__link">Advantages</a>
+                    <a href="#advantages" class="nav-link">Advantages</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#pricing" class="nav__link">Pricing</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#how-it-works" class="nav__link">How it works</a>
+                    <a href="#how-it-works" class="nav-link">How it works</a>
                 </li>
             </ul>
             
             <div class="nav__actions">
                <a href="register.html" class="btn btn--primary">Get started</a>
-            </div>
-            
-            <div class="nav__toggle" id="nav-toggle">
-                <span class="toggle__bar"></span>
-                <span class="toggle__bar"></span>
-                <span class="toggle__bar"></span>
             </div>
         </nav>
     </header>
@@ -127,8 +79,8 @@
         <div class="container">
             <h2 class="section__title">Features</h2>
             <div class="features__grid">
-                <div class="feature__item">
-                    <div class="description_image">
+                <div class="feature__item section card">
+                    <div class="description_image feature__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/todo.svg" alt="To-Do Lists" class="feature__img" id="feature-todo-image" loading="lazy" decoding="async">
                     </div>
@@ -136,8 +88,8 @@
                     <p class="feature__description">Create and track tasks with deadlines to stay organized and never miss important dates.</p>
                 </div>
                 
-                <div class="feature__item">
-                    <div class="description_image">
+                <div class="feature__item section card">
+                    <div class="description_image feature__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/journal.svg" alt="Daily Journal" class="feature__img" id="feature-journal-image" loading="lazy" decoding="async">
                     </div>
@@ -145,8 +97,8 @@
                     <p class="feature__description">Keep notes and track your daily progress to build productive habits.</p>
                 </div>
                 
-                <div class="feature__item">
-                    <div class="description_image">
+                <div class="feature__item section card">
+                    <div class="description_image feature__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/timer.svg" alt="Focus Timer" class="feature__img" id="feature-timer-image" loading="lazy" decoding="async">
                     </div>
@@ -154,8 +106,8 @@
                     <p class="feature__description">Use the Pomodoro timer to maintain concentration during work sessions.</p>
                 </div>
                 
-                <div class="feature__item">
-                    <div class="description_image">
+                <div class="feature__item section card">
+                    <div class="description_image feature__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/progress.svg" alt="Progress Tracking" class="feature__img" id="feature-progress-image" loading="lazy" decoding="async">
                     </div>
@@ -176,17 +128,17 @@
                     <img src="images/advantages.svg" alt="Ordo Advantages" class="advantages__img" id="advantages-image" loading="lazy" decoding="async">
                 </div>
                 <div class="advantages__list">
-                    <div class="advantage__item">
+                    <div class="advantage__item section card">
                         <h3 class="advantage__title">All-in-One Solution</h3>
                         <p class="advantage__description">Combine tasks, journaling, and focus timer in one product without needing separate apps.</p>
                     </div>
                     
-                    <div class="advantage__item">
+                    <div class="advantage__item section card">
                         <h3 class="advantage__title">Simple & Intuitive</h3>
                         <p class="advantage__description">Clean interface designed for daily use without unnecessary complexity.</p>
                     </div>
                     
-                    <div class="advantage__item">
+                    <div class="advantage__item section card">
                         <h3 class="advantage__title">Focus on Productivity</h3>
                         <p class="advantage__description">Tools specifically designed to help you build better work habits and stay focused.</p>
                     </div>
@@ -198,22 +150,26 @@
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section__title">Pricing</h2>
-            <div class="pricing__content">
+            <div class="pricing__info">
+                <h2 class="section__title">Pricing</h2>
+                <p class="pricing__note">Ordo is completely free and open access. We believe productivity tools should be available to everyone.</p>
+            </div>
+            
+            <div class="pricing__content card">
                 <div class="pricing__card">
                     <h3 class="pricing__title">Free</h3>
                     <p class="pricing__price">$0</p>
                     <p class="pricing__period">forever</p>
                     <ul class="pricing__features">
-                        <li class="pricing__feature">All core features</li>
-                        <li class="pricing__feature">Unlimited tasks & notes</li>
-                        <li class="pricing__feature">Basic progress tracking</li>
-                        <li class="pricing__feature">Focus timer</li>
+                        <li class="pricing__feature"><i class="fas fa-check-circle"></i> All core features</li>
+                        <li class="pricing__feature"><i class="fas fa-check-circle"></i> Unlimited tasks & notes</li>
+                        <li class="pricing__feature"><i class="fas fa-check-circle"></i> Basic progress tracking</li>
+                        <li class="pricing__feature"><i class="fas fa-check-circle"></i> Focus timer</li>
                     </ul>
-                    <button class="btn btn--primary pricing__btn">Get Started</button>
+                    <a href="register.html" class="btn btn--primary pricing__btn btn-block">Get Started</a>
                 </div>
             </div>
-            <p class="pricing__note">Ordo is completely free and open access. We believe productivity tools should be available to everyone.</p>
+            
         </div>
     </section>
 
@@ -222,9 +178,9 @@
         <div class="container">
             <h2 class="section__title">How It Works</h2>
             <div class="steps">
-                <div class="step">
+                <div class="step section card">
                     <div class="step__number">1</div>
-                    <div class="description_image">
+                    <div class="description_image step__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/signup.svg" alt="Sign Up" class="step__img" id="step1-image" loading="lazy" decoding="async">
                     </div>
@@ -232,9 +188,9 @@
                     <p class="step__description">Create your free account in less than a minute.</p>
                 </div>
                 
-                <div class="step">
+                <div class="step section card">
                     <div class="step__number">2</div>
-                    <div class="description_image">
+                    <div class="description_image step__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/setup.svg" alt="Set Up" class="step__img" id="step2-image" loading="lazy" decoding="async">
                     </div>
@@ -242,9 +198,9 @@
                     <p class="step__description">Add your tasks, deadlines, and customize your preferences.</p>
                 </div>
                 
-                <div class="step">
+                <div class="step section card">
                     <div class="step__number">3</div>
-                    <div class="description_image">
+                    <div class="description_image step__icon">
                         <!-- Оптимізоване зображення -->
                         <img src="images/start_working.svg" alt="Start Working" class="step__img" id="step3-image" loading="lazy" decoding="async">
                     </div>
@@ -259,8 +215,10 @@
     <section class="cta">
         <div class="container">
             <h2 class="cta__title">Ready to Boost Your Productivity?</h2>
-            <p class="cta__description">Join thousands of students and professionals who use Ordo to organize their work and achieve their goals.</p>
-            <button class="btn btn--large btn--primary" id="cta-btn">Get Started Now</button>
+            <div class="cta__block">
+                <p class="cta__description">Join thousands of students and professionals who use Ordo to organize their work and achieve their goals.</p>
+                <a href="register.html" class="btn btn--large btn--primary" id="cta-btn">Get Started Now</a>
+            </div>
         </div>
     </section>
 
@@ -270,7 +228,7 @@
             <div class="footer__content">
                 <div class="footer__section">
                     <div class="footer__logo">
-                        <img src="#" alt="Ordo Logo" class="footer__logo-img" id="footer-logo-image">
+                        <img src="images/logo.svg" alt="Ordo Logo" class="footer__logo-img" id="footer-logo-image">
                         <span class="footer__logo-text">Ordo</span>
                     </div>
                     <p class="footer__description">Your daily companion for organized work and productive habits.</p>
@@ -313,16 +271,13 @@
                     </ul>
                     <div class="footer__social">
                         <a href="#" class="social__link" aria-label="Twitter">
-                            <!-- Social icon placeholder -->
-                            <span class="social__icon">Tw</span>
+                            <i class="fab fa-twitter social__icon"></i>
                         </a>
                         <a href="#" class="social__link" aria-label="Facebook">
-                            <!-- Social icon placeholder -->
-                            <span class="social__icon">Fb</span>
+                            <i class="fab fa-facebook-f social__icon"></i>
                         </a>
                         <a href="#" class="social__link" aria-label="Instagram">
-                            <!-- Social icon placeholder -->
-                            <span class="social__icon">Ig</span>
+                            <i class="fab fa-instagram social__icon"></i>
                         </a>
                     </div>
                 </div>
@@ -333,5 +288,12 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Невелика функція для роботи бургер-меню (JS)
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('open');
+        });
+    </script>
 </body>
 </html>

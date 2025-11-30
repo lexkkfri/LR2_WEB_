@@ -7,41 +7,36 @@
 
     <link rel="icon" type="image/svg" href="images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="images/favicon.png">
-
     
-    <style>
-        /* мінімальні стилі */
-        body { font-family: Arial; margin: 0; padding: 20px; }
-        .nav { display: flex; justify-content: space-between; margin-bottom: 40px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-link.active { font-weight: bold; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; cursor: pointer; }
-        .timer-display { font-size: 80px; text-align: center; margin: 40px 0; font-family: monospace; }
-        .timer-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; }
-        .timer-settings { display: flex; justify-content: center; gap: 40px; }
-        .setting { text-align: center; }
-        .number-input { width: 60px; text-align: center; padding: 5px; }
-        footer { text-align: center; margin-top: 40px; color: #666; }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Навбар -->
-    <nav class="nav">
-        <div class="nav__logo">
+     <header class="header">
+        
+        <nav class="nav container" id="main-nav">
+            <div class="nav__logo">
                 <a href="index.html" class="logo__link">
-                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image" style="height: 30px">
+                    <img src="images/logo.svg" alt="Ordo Logo" class="logo__image" id="logo-image">
                 </a>
             </div>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="deadline-tracker.html" class="nav-link">Deadline Tracker</a>
-            <a href="timer.html" class="nav-link active">Timer</a>
-        </div>
-        <div class="avatar" id="avatar-btn">JS</div>
-    </nav>
+            <div class="nav-links" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="deadline-tracker.html" class="nav-link">Deadline Tracker</a>
+                <a href="timer.html" class="nav-link active">Timer</a>
+            </div>
+            <div class="avatar" id="avatar-btn">KO</div>
+            <!-- Toggle button for mobile menu -->
+            <div class="nav__toggle" id="nav-toggle">
+                <span class="toggle__bar"></span>
+                <span class="toggle__bar"></span>
+                <span class="toggle__bar"></span>
+            </div>
+        </nav>
+    </header>
 
     <!-- Секція таймера -->
-    <main>
+    <main class="timer-page container">
         <h1 class="timer_title">Timer</h1>
         
         <!-- Дисплей таймера -->
@@ -49,10 +44,10 @@
         
         <!-- Управління -->
         <div class="timer-controls">
-            <button id="start-btn">Start</button>
-            <button id="pause-btn" disabled>Pause</button>
-            <button id="discard-btn">Discard</button>
-            <button id="skip-btn">Skip</button>
+            <button id="start-btn" class="btn">Start</button>
+            <button id="pause-btn" class="btn" disabled>Pause</button>
+            <button id="discard-btn" class="btn">Discard</button>
+            <button id="skip-btn" class="btn">Skip</button>
         </div>
         
         <!-- Налаштування таймера -->
@@ -68,13 +63,20 @@
             </div>
         </div>
     </main>
+    
     <footer class="footer">
-    <div class="footer__content">
-        <p class="footer__text">
-            &copy; 2025 Ordo | Organize your work, boost your productivity
-        </p>
-    </div>
-</footer>
+        <div class="footer__content container">
+            <p class="footer__text">
+                &copy; 2025 Ordo | Organize your work, boost your productivity
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Невелика функція для роботи бургер-меню (JS)
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('open');
+        });
+    </script>
 </body>
-
 </html>
