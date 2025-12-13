@@ -1,7 +1,3 @@
-/*
- * pages.css - Стилі для сторінок Home, Timer, Deadline Tracker
- */
-
 /* -------------------- Home Page (index.html) ----------------------- */
 .user-profile {
     background-color: var(--color-secondary-bg);
@@ -28,10 +24,20 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    min-width: 0;
 }
 
 .user-details {
     flex-grow: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.user-name, .user-email {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 
@@ -61,11 +67,10 @@
 
 .content-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* основний контент ширше */
+    grid-template-columns: 2fr 1fr; 
     gap: 30px;
 }
 
-/* секція нотаток */
 .notes textarea {
     height: 200px;
     resize: vertical;
@@ -80,9 +85,35 @@
     width: 100%;
 }
 
-/* кнопка збереження */
 .save-button {
-    grid-column: 1 / -1; /* на всю ширину сітки */
+    grid-column: 1 / -1; 
+}
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-hover-bg);
+    padding-bottom: 15px;
+}
+
+.todo-form .form-input {
+    flex-grow: 1;
+    border: 1px solid var(--color-hover-light);
+    background-color: var(--color-primary-bg);
+}
+
+.add-todo-btn {
+    padding: 10px 15px;
+    background-color: var(--color-accent-secondary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+.add-todo-btn:hover {
+    background-color: var(--color-accent-main);
 }
 
 @media (max-width: 600px) {
@@ -98,6 +129,20 @@
     .streak {
         text-align: left;
         width: 100%;
+    }
+
+    .user-name {
+        font-size: 1.1rem; 
+    }
+
+    .user-email {
+        font-size: 0.8rem; 
+    }
+
+    .avatar-large {
+        max-width: 46px;
+        max-height: 46px;
+        font-size: 1.2rem;
     }
 }
 
@@ -127,7 +172,7 @@
     font-size: 6rem;
     text-align: center;
     margin: 30px 0;
-    font-family: var(--font-body); /* Roboto Mono для таймера */
+    font-family: var(--font-body); 
     font-weight: 700;
     color: var(--color-text-dark);
 }
@@ -181,6 +226,74 @@
     padding: 8px;
 }
 
+.session-tracker {
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#current-session-display {
+    color: var(--color-accent-main);
+}
+
+.timer-settings {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    flex-wrap: wrap; 
+}
+
+body.mode-study .timer-page main {
+    border: 3px solid var(--color-accent-main);
+}
+
+body.mode-rest .timer-page main {
+    border: 3px solid var(--color-accent-secondary); 
+}
+
+body.mode-study .timer_title::after {
+    content: " (Study)";
+    color: var(--color-accent-main);
+}
+body.mode-rest .timer_title::after {
+    content: " (Rest)";
+    color: var(--color-accent-secondary);
+}
+
+@media (max-width: 600px) {
+    .timer-settings {
+        gap: 20px;
+    }
+    .timer-settings .setting {
+        width: 45%;
+    }
+
+    .timer-display {
+        font-size: 5rem;
+    }
+}
+
+
+
+body.dark-theme .timer-controls button {
+    background-color: var(--color-accent-main); 
+    color: var(--color-primary-bg);
+}
+
+body.dark-theme .timer-controls button:hover:not(:disabled) {
+    background-color: #547732; 
+}
+
+body.dark-theme .timer-controls button:disabled {
+    background-color: #3c4946; 
+    color: var(--color-text-muted); 
+    box-shadow: none;
+}
+
+
 /* ----------------- Deadline Tracker (deadline-tracker.html) -------------------- */
 .tracker-header h1 {
     font-size: 2.2rem;
@@ -230,6 +343,10 @@
     gap: 30px;
 }
 
+.full-width-section {
+    margin-top: 30px;
+}
+
 .task-form h2 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
@@ -268,6 +385,13 @@
     color: var(--color-accent-main);
 }
 
+#tasksContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
 .task-card {
     padding: 15px;
     margin-bottom: 15px;
@@ -275,6 +399,8 @@
     border-radius: var(--border-radius-base);
     border-left: 5px solid var(--color-accent-main);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    min-height: 150px;
 }
 
 .task-card.priority-high { border-left-color: #ff4d4d; }
@@ -392,6 +518,406 @@
     transform: translateY(-2px); 
 }
 
+@media (max-width: 768px) {
+    
+    .stats {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    .stat-card {
+        flex-basis: 25%;
+        min-width: 100px;
+        flex-shrink: 0;
+        padding: 10px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .calendar-header {
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .calendar-nav button, #todayBtn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    .calendar-grid {
+        gap: 2px;
+        font-size: 0.8rem;
+    }
+
+    .calendar-day-header {
+        padding: 5px 2px;
+        font-size: 0.7rem;
+    }
+
+    .calendar-day {
+        min-height: 50px;
+        padding: 2px;
+        font-size: 0.7rem;
+    }
+
+    .day-number {
+        font-size: 0.8rem;
+        text-align: left;
+        padding-left: 3px;
+        font-weight: 600;
+    }
+
+    .task-item {
+        display: none;
+    }
+
+    .calendar-day-content {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 3px;
+    }
+
+    .task-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+  
+    .task-dot.low {
+        background-color: var(--color-accent-secondary);
+    }
+
+    
+    .task-dot.medium {
+        background-color: #ff9e00;
+    }
+
+    
+    .task-dot.high {
+        background-color: #dc3545;
+    }
+
+    
+    .task-dot.past-due {
+        background-color: #dc3545; 
+        border: 1px solid white;
+    }
+
+    
+    .task-dot.completed-dot {
+        background-color: var(--color-accent-main); 
+        border: 1px solid var(--color-text-muted);
+        opacity: 0.6;
+    }
+
+    .mobile-select-modal .modal-content {
+        max-width: 90%;
+        min-width: 300px;
+    }
+    
+    .task-selection-list {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .task-selection-list li {
+        padding: 10px;
+        border-bottom: 1px solid var(--color-hover-bg);
+        cursor: pointer;
+        transition: background-color 0.2s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .task-selection-list li:hover {
+        background-color: var(--color-hover-bg);
+    }
+    
+    .task-selection-list li .task-priority-indicator {
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+    }
+
+    #tasksContainer {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    } 
+
+    .task-list-section.full-width-section {
+        padding-left: 15px; 
+        padding-right: 15px;
+    }
+
+    @media (min-width: 450px) {
+        #tasksContainer {
+            grid-template-columns: repeat(2, 1fr); 
+        }
+    }
+
+}
+
+
+body.dark-theme .notes textarea,
+body.dark-theme .todo-form .form-input {
+    background-color: var(--color-secondary-bg); 
+    color: var(--color-text-dark); 
+    border-color: var(--color-hover-light);
+}
+
+
+body.dark-theme .notes textarea:focus,
+body.dark-theme .todo-form .form-input:focus {
+    background-color: var(--color-secondary-bg);
+    border-color: var(--color-accent-main);
+    box-shadow: 0 0 0 2px rgba(150, 201, 92, 0.4);
+}
+
+
+body.dark-theme .add-todo-btn:hover {
+    background-color: var(--color-accent-main);
+}
+
+
+body.dark-theme .archived-list li:hover {
+    background-color: var(--color-hover-bg);
+}
+
+body.dark-theme .add-todo-btn {
+    background-color: var(--color-accent-secondary); 
+    color: var(--color-text-dark);
+}
+
+body.dark-theme .todo-form .add-todo-btn:hover {
+    background-color: var(--color-accent-main);
+    color: var(--color-primary-bg);
+}
+
+body.dark-theme #save-progress-btn, 
+body.dark-theme .save-btn {
+    background-color: var(--color-accent-main);
+    color: var(--color-primary-bg);
+}
+
+body.dark-theme .save-btn:hover,
+body.dark-theme #save-progress-btn:hover {
+    background-color: #547732; 
+    color: var(--color-primary-bg);
+}
+
+
+/* ----------- Modal Styles----------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--color-primary-bg);
+    padding: 30px;
+    border-radius: var(--border-radius-base);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--box-shadow-card);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-hover-bg);
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+}
+.close-modal:hover {
+    color: #dc3545;
+}
+
+/* ----------- Tracker Specific Styles----------- */
+.stat-card.total { border-top-color: var(--color-accent-main); }
+.stat-card.completed { border-top-color: var(--color-accent-secondary); }
+.stat-card.pending { border-top-color: #ffc107; }
+.stat-card.overdue { border-top-color: #dc3545; }
+
+
+.priority-high { color: #dc3545; background-color: #ffedef; } 
+.priority-medium { color: #ff9e00; background-color: #fff4e6; } 
+.priority-low { color: var(--color-accent-secondary); background-color: #e6f5e6; } 
+.priority-past-due { color: #dc3545; background-color: #ffedef; } 
+
+.task-card { border-left-color: var(--color-accent-secondary); }
+.task-card.high { border-left-color: #dc3545; }
+.task-card.medium { border-left-color: #ff9e00; }
+.task-card.past-due { border-left-color: #dc3545; }
+
+
+.calendar-day.today {
+    border: 2px solid var(--color-accent-main);
+    background-color: #f0fff0;
+}
+.task-item.past-due {
+    background-color: #dc3545;
+    color: white;
+}
+
+.calendar-grid .task-item {
+    font-size: 0.75rem;
+    padding: 2px 5px; 
+    margin-bottom: 2px;
+    border-radius: 3px;
+    color: var(--color-text-dark); 
+    background-color: var(--color-hover-bg); 
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    border: 1px solid transparent; 
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    border-width: 1px;
+}
+
+.calendar-grid .task-item:hover {
+    cursor: pointer; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    border-color: var(--color-accent-main); 
+    transform: scale(1.02);
+}
+
+.calendar-grid .task-item.high {
+    background-color: #ffedef; 
+    border-color: #dc3545; 
+    color: #dc3545; 
+    font-weight: 600;
+}
+
+.calendar-grid .task-item.medium {
+    background-color: #ffecce; 
+    border-color: #ff9e00; 
+    color: #ff9e00;
+    font-weight: 600;
+}
+
+.calendar-grid .task-item.low {
+    background-color: #e6f5e6; 
+    border-color: #8bac38; 
+    color: #8bac38;
+}
+
+
+.calendar-grid .task-item.past-due {
+    background-color: #dc3545; 
+    color: white; 
+    text-decoration: line-through;
+    border-color: #dc3545;
+}
+
+body.dark-theme .calendar-day {
+    background-color: var(--color-secondary-bg); 
+    border-color: var(--color-hover-bg); 
+}
+
+body.dark-theme .calendar-day:hover {
+    background-color: #242c2b; 
+    border-color: var(--color-accent-main); 
+    cursor: pointer;
+}
+
+
+body.dark-theme .calendar-day.today {
+    background-color: #34413e; 
+    border: 2px solid var(--color-accent-main);
+}
+
+body.dark-theme .task-card .task-priority {
+    background-color: var(--color-secondary-bg); 
+    border: 1px solid var(--color-hover-bg); 
+}
+
+
+
+
+body.dark-theme .task-card .task-priority.priority-high {
+    color: #ff8e8e; 
+}
+
+body.dark-theme .task-card .task-priority.priority-medium {
+    color: #ffc107; 
+}
+
+
+body.dark-theme .task-card .task-priority.priority-low {
+    color: var(--color-accent-secondary); 
+}
+
+
+body.dark-theme .task-card.completed {
+    background: var(--color-secondary-bg); 
+}
+
+
+body.dark-theme .calendar-grid .task-item {
+    color: var(--color-text-dark); 
+    border: 1px solid var(--color-hover-bg); 
+}
+
+/* високий піоритет */
+body.dark-theme .calendar-grid .task-item.high {
+    background-color: #4f2d33; 
+    border-color: #dc3545;     
+    color: #ffc1c1;            
+}
+
+/* середній пріоритет */
+body.dark-theme .calendar-grid .task-item.medium {
+    background-color: #4a4130; 
+    border-color: #ff9e00;     
+    color: #fff4d1;            
+}
+
+/* низький пріоритет */
+body.dark-theme .calendar-grid .task-item.low {
+    background-color: #314238; 
+    border-color: var(--color-accent-secondary);
+    color: #d8ffd3;            
+}
+
+/* прострочені */
+body.dark-theme .calendar-grid .task-item.past-due {
+    background-color: #dc3545; 
+    color: white;
+    border-color: white;
+}
+
 /* -------------- Description Page ----------------- */
 
 .hero__img, 
@@ -452,11 +978,11 @@
 }
 
 .feature__item {
-    background-color: #fff; /* Світлий фон (або світло-сірий #f3f3f3) */
-    border: 1px solid var(--color-text-dark); /* Чітка чорна рамка */
-    border-radius: 30px; /* Сильні заокруглення */
+    background-color: #fff;
+    border: 1px solid var(--color-text-dark); 
+    border-radius: 30px; 
     padding: 40px;
-    box-shadow: 0 6px 0 var(--color-text-dark); /* Жорстка тінь знизу */
+    box-shadow: 0 6px 0 var(--color-text-dark); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -480,7 +1006,7 @@
 
 .feature__title {
     font-size: 1.5rem;
-    background-color: var(--color-accent-secondary); /* Ефект маркера */
+    background-color: var(--color-accent-secondary); 
     display: inline-block;
     padding: 2px 7px;
     border-radius: 5px;
@@ -488,7 +1014,6 @@
     color: var(--color-text-dark);
 }
 
-/* Якщо картка вже зелена, робимо заголовок білим */
 .feature__item:nth-child(even) .feature__title {
     background-color: white;
 }
@@ -496,7 +1021,7 @@
 .feature__icon {
     margin-bottom: 20px;
     max-width: 150px;
-    margin-left: auto; /* Вирівнювання картинки праворуч */
+    margin-left: auto; 
 }
 
 .advantages__content {
@@ -600,7 +1125,7 @@
 }
 
 .pricing__card {
-    background: var(--color-text-dark); /* Темна картка */
+    background: var(--color-text-dark); 
     color: white;
     border-radius: 30px;
     padding: 50px;

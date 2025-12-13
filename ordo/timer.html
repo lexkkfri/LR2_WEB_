@@ -25,7 +25,27 @@
                 <a href="deadline-tracker.html" class="nav-link">Deadline Tracker</a>
                 <a href="timer.html" class="nav-link active">Timer</a>
             </div>
-            <div class="avatar" id="avatar-btn">KO</div>
+            
+            <div class="avatar-container">
+                <div class="avatar" id="avatar-btn">KO</div>
+    
+                <div class="dropdown-menu" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <p id="dropdown-username">User Name</p> 
+                        <p id="dropdown-email" class="email-small">user@example.com</p>
+                    </div>
+        
+                    <button id="toggle-dark-mode" class="dropdown-item">
+                        <i class="fas fa-moon"></i> Toggle Dark Mode
+                    </button>
+        
+                    <button id="logout-btn" class="dropdown-item logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </button>
+                </div>
+            </div>
+
+
             <!-- Toggle button for mobile menu -->
             <div class="nav__toggle" id="nav-toggle">
                 <span class="toggle__bar"></span>
@@ -49,6 +69,10 @@
             <button id="discard-btn" class="btn">Discard</button>
             <button id="skip-btn" class="btn">Skip</button>
         </div>
+
+        <div class="session-tracker">
+            Current Session: <span id="current-session-display">0 / 0</span>
+        </div>
         
         <!-- Налаштування таймера -->
         <div class="timer-settings">
@@ -61,13 +85,18 @@
                 <h3>Rest Minutes</h3>
                 <input type="number" class="number-input" id="rest-minutes" value="5" min="1" max="30">
             </div>
+
+            <div class="setting">
+                <h3>Total Sessions</h3>
+                <input type="number" class="number-input" id="total-sessions" value="4" min="1" max="100">
+            </div>
         </div>
     </main>
     
     <footer class="footer">
         <div class="footer__content container">
             <p class="footer__text">
-                &copy; 2025 Ordo | Organize your work, boost your productivity
+                &copy; <span id="current-year">2025</span> | Organize your work, boost your productivity
             </p>
         </div>
     </footer>
@@ -78,5 +107,8 @@
             document.getElementById('main-nav').classList.toggle('open');
         });
     </script>
+    <script src="js/db.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/global.js"></script> 
 </body>
 </html>

@@ -8,11 +8,9 @@
     <link rel="icon" type="image/svg" href="images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="images/favicon.png">
 
-
     <link rel="stylesheet" href="css/styles.css">
-</head>
+    </head>
 <body>
-    <!-- Навбар -->
     <header class="header">
         <nav class="nav container" id="main-nav">
             <div class="nav__logo">
@@ -25,8 +23,26 @@
                 <a href="deadline-tracker.html" class="nav-link active">Deadline Tracker</a>
                 <a href="timer.html" class="nav-link">Timer</a>
             </div>
-            <div class="avatar" id="avatar-btn">KO</div>
-            <!-- Toggle button for mobile menu -->
+
+            <div class="avatar-container">
+                <div class="avatar" id="avatar-btn">KO</div>
+    
+                <div class="dropdown-menu" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <p id="dropdown-username">User Name</p> 
+                        <p id="dropdown-email" class="email-small">user@example.com</p>
+                    </div>
+        
+                    <button id="toggle-dark-mode" class="dropdown-item">
+                        <i class="fas fa-moon"></i> Toggle Dark Mode
+                    </button>
+        
+                    <button id="logout-btn" class="dropdown-item logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </button>
+                </div>
+            </div>
+
             <div class="nav__toggle" id="nav-toggle">
                 <span class="toggle__bar"></span>
                 <span class="toggle__bar"></span>
@@ -42,19 +58,19 @@
         </header>
 
         <div class="stats">
-            <div class="stat-card">
+            <div class="stat-card total">
                 <div class="stat-value" id="total-tasks">0</div>
                 <div class="stat-label">Total Tasks</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card completed">
                 <div class="stat-value" id="completed-tasks">0</div>
                 <div class="stat-label">Completed</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card pending">
                 <div class="stat-value" id="pending-tasks">0</div>
                 <div class="stat-label">Pending</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card overdue">
                 <div class="stat-value" id="overdue-tasks">0</div>
                 <div class="stat-label">Overdue</div>
             </div>
@@ -87,16 +103,6 @@
                     <button type="submit" class="btn btn-block">Add Task</button>
                 </form>
 
-                <div class="task-list">
-                    <h3>Your Tasks</h3>
-                    <div id="tasksContainer">
-                        <div class="empty-state">
-                            <i class="fas fa-tasks"></i>
-                            <h3>No tasks yet</h3>
-                            <p>Add your first task using the form above</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="calendar-section section">
@@ -109,25 +115,92 @@
                     <button class="btn" id="todayBtn">Today</button>
                 </div>
                 <div class="calendar-grid" id="calendarGrid">
-                    <!-- Календар буде тут -->
+                    </div>
+            </div>
+        </div>
+
+    
+        <div class="task-list-section section full-width-section">
+            <div class="task-list">
+                <h2>Your Tasks</h2>
+                <div id="tasksContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-tasks"></i>
+                        <h3>No tasks yet</h3>
+                        <p>Add your first task using the form above</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
     
     <footer class="footer">
         <div class="footer__content container">
             <p class="footer__text">
-                &copy; 2025 Ordo | Organize your work, boost your productivity
+                &copy; <span id="current-year">2025</span> Ordo | Organize your work, boost your productivity
             </p>
         </div>
     </footer>
-    
+
+    <div class="modal" id="editTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Task</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editTaskForm">
+                <input type="hidden" id="editTaskId">
+                <div class="form-group">
+                    <label for="editTaskTitle">Task Title</label>
+                    <input type="text" id="editTaskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDescription">Description</label>
+                    <textarea id="editTaskDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDueDate">Due Date</label>
+                    <input type="date" id="editTaskDueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskPriority">Priority</label>
+                    <select id="editTaskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="editTaskCompleted"> Mark as completed
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-block">Update Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal mobile-select-modal" id="taskSelectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="taskSelectTitle">Tasks for [Date]</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <ul class="task-selection-list" id="taskSelectionList">
+                </ul>
+        </div>
+    </div>
+
     <script>
         // Невелика функція для роботи бургер-меню (JS)
         document.getElementById('nav-toggle').addEventListener('click', function() {
             document.getElementById('main-nav').classList.toggle('open');
         });
     </script>
+    <script src="js/db.js"></script>
+    <script src="js/deadline-tracker.js"></script>
+    <script src="js/global.js"></script> 
 </body>
 </html>

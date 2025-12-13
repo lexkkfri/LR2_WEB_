@@ -1,36 +1,44 @@
-/*
- * base.css - Базові стилі, змінні, шрифти
- */
-
-/*імпорт Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
 
-/* змінні для кольорів */
 :root {
-    /*основні кольори відповідно до брендбуку з ЛР1*/
-    --color-primary-bg: #FFFFFF;     /*##FFFAEC */  
-    --color-secondary-bg: #e4f0e2;     
-    --color-accent-main: #4B7D65;      
-    --color-text-dark: #242424;         
+    --color-primary-bg: #FFFFFF;
+    --color-secondary-bg: #e4f0e2;
+    --color-accent-main: #4B7D65;
+    --color-text-dark: #242424;
     
-    /* додаткові/акцентні кольори */
-    --color-hover-light: #C6C8C6;      
-    --color-hover-bg: #F2F2F2;          
-    --color-accent-secondary: #A7C854;  
-    --color-text-muted: #3D3D3D;        
+    --color-hover-light: #C6C8C6;
+    --color-hover-bg: #F2F2F2;
+    --color-accent-secondary: #A7C854;
+    --color-text-muted: #3D3D3D;
     
-    /* шрифти */
     --font-heading: 'Comfortaa', sans-serif;
     --font-body: 'Roboto Mono', monospace;
     --font-accent: 'M PLUS Rounded 1c', sans-serif;
     
-    /* Інші змінні */
     --border-radius-base: 8px;
     --transition-speed: 0.3s;
     --box-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Скидання стилів */
+body.dark-theme {
+    --color-primary-bg: #1e1e1e;
+    --color-secondary-bg: #2d3835;
+    --color-accent-main: #96c95c;
+    --color-text-dark: #f0f0f0;
+    --color-text-muted: #c4c4c4;
+    
+    --color-accent-secondary: #c2ff6d;
+    --color-hover-bg: #3c4946;
+    --color-hover-light: #4a5451; 
+    
+    color: var(--color-text-dark);
+    background-color: var(--color-primary-bg);
+}
+
+body.dark-theme .nav__logo .logo__image {
+    filter: brightness(0) invert(1);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -79,7 +87,6 @@ ul {
     list-style: none;
 }
 
-/* Типографіка */
 h1, h2, h3, h4, .section-title, .hero__title, .timer_title {
     font-family: var(--font-heading);
     color: var(--color-text-dark);
@@ -90,14 +97,12 @@ h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
 
-/* Зображення */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Базові стилі секцій */
 section {
     padding: 40px 0;
 }
@@ -111,13 +116,13 @@ section {
     display: inline-block;
     padding-bottom: 5px;
 }
-/* універсальні стилі фокусу */
+
 a:focus,
 button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-    outline: 2px solid var(--color-accent-secondary); /* Основна акцентна рамка */
-    outline-offset: 3px; /* Відступ від елемента */
-    border-color: var(--color-accent-secondary) !important; /* Гарантуємо, що кордон стає акцентним */
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 3px;
+    border-color: var(--color-accent-secondary) !important;
 }
